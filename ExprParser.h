@@ -12,7 +12,7 @@
 class  ExprParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, INT = 7
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, INT = 5, OP = 6
   };
 
   enum {
@@ -97,6 +97,7 @@ public:
 
     std::vector<ExprContext *> expr();
     ExprContext* expr(size_t i);
+    antlr4::tree::TerminalNode *OP();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 

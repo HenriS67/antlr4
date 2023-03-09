@@ -23,9 +23,14 @@ public:
     return (int) visit(ctx->expr());
   }
 
-  virtual antlrcpp::Any visitDiv(ExprParser::DivContext *ctx) override {
-
-    return (int) visit(ctx->expr(0)) / (int) visit(ctx->expr(1));
+  virtual antlrcpp::Any visitMuldiv(ExprParser::MuldivContext *ctx) override {
+    char op=ctx->OP()->getText()[0];
+    int r1 = (int) visit(ctx->expr(0));
+    int r2 = (int) visit(ctx->expr(1));
+    if(op=='*')
+      return r1*r2;
+    else
+      return r1/r2;
   }
 
   virtual antlrcpp::Any visitAdd(ExprParser::AddContext *ctx) override {
@@ -38,10 +43,6 @@ public:
 
   virtual antlrcpp::Any visitConst(ExprParser::ConstContext *ctx) override {
     return (int) stoi(ctx->INT()->getText());
-  }
-
-  virtual antlrcpp::Any visitMul(ExprParser::MulContext *ctx) override {
-    return (int) visit(ctx->expr(0)) * (int) visit(ctx->expr(1));
   }
 
 

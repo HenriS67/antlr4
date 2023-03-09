@@ -2,7 +2,7 @@ grammar Expr;
 
 prog : expr ;
 
-expr : expr ('*'|'/') expr # muldiv
+expr : expr OP expr  # muldiv
      | expr '+' expr # add
      | expr '-' expr # sub
      | INT           # const
@@ -10,3 +10,4 @@ expr : expr ('*'|'/') expr # muldiv
      ;
 
 INT : [0-9]+ ;
+OP : ('*'|'/');
