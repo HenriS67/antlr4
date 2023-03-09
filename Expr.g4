@@ -2,8 +2,7 @@ grammar Expr;
 
 prog : expr ;
 
-expr : expr '*' expr # mul
-     | expr '/' expr # div   
+expr : expr ('*'|'/') expr # muldiv
      | expr '+' expr # add
      | expr '-' expr # sub
      | INT           # const
